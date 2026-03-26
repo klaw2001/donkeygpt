@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DonkeyGPT | The Patient Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#634629",
+              "tertiary-fixed-dim": "#e1c299",
+              "surface-dim": "#dad9e3",
+              "on-error": "#ffffff",
+              "surface": "#fbf8ff",
+              "inverse-on-surface": "#f1effa",
+              "surface-bright": "#fbf8ff",
+              "on-tertiary-fixed": "#281801",
+              "secondary-container": "#7d5d3f",
+              "surface-container-highest": "#e3e1ec",
+              "tertiary-container": "#775f3d",
+              "on-surface": "#1a1b22",
+              "error-container": "#ffdad6",
+              "on-background": "#1a1b22",
+              "tertiary": "#5d4728",
+              "primary-container": "#7d5d3f",
+              "on-secondary-fixed": "#2c1601",
+              "primary-fixed": "#ffdcbf",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#ffdcbf",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#eeedf7",
+              "surface-tint": "#77583a",
+              "on-primary-fixed-variant": "#5d4125",
+              "secondary": "#7d5d3f",
+              "surface-container-high": "#e8e7f1",
+              "inverse-surface": "#2f3038",
+              "on-secondary-fixed-variant": "#5d4125",
+              "inverse-primary": "#e8bf9a",
+              "on-surface-variant": "#4f453c",
+              "on-tertiary-fixed-variant": "#584324",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#fbdbb1",
+              "background": "#fbf8ff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#2c1601",
+              "outline": "#81756b",
+              "outline-variant": "#d3c4b9",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#e8bf9a",
+              "on-primary-container": "#ffdaba",
+              "tertiary-fixed": "#feddb3",
+              "secondary-fixed-dim": "#e8bf9a",
+              "surface-variant": "#e3e1ec",
+              "on-secondary-container": "#ffffff",
+              "surface-container-low": "#f4f2fd"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .tonal-depth-shift { transition: background-color 0.3s ease; }
+      .no-line { border: none !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm shadow-[#1a1b22]/5">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black text-[#634629] dark:text-[#fbf8ff] tracking-tighter">DonkeyGPT</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#634629] dark:text-[#ffffff] font-semibold border-b-2 border-[#634629] pb-1 font-inter tracking-tight text-body-lg" href="#">Features</a>
+<a class="text-[#1a1b22]/70 dark:text-[#eeedf7]/70 hover:text-[#634629] transition-colors font-inter tracking-tight text-body-lg" href="#">Pricing</a>
+<a class="text-[#1a1b22]/70 dark:text-[#eeedf7]/70 hover:text-[#634629] transition-colors font-inter tracking-tight text-body-lg" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2 text-[#1a1b22]/70 dark:text-[#eeedf7]/70 font-medium hover:bg-surface-container-lowest/50 transition-all duration-300 active:scale-95">Login</button>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-xl font-semibold shadow-md hover:opacity-90 transition-all active:scale-95">Sign Up</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-40 pb-24 px-8 overflow-hidden">
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-sm font-medium mb-8">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                Introducing The Patient Intelligence
+            </div>
+<h1 class="text-6xl md:text-7xl font-black text-on-surface tracking-tight leading-[1.1] mb-8">
+                Learn anything. <br/>
+<span class="text-primary">No jargon. No judgment.</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-body leading-relaxed max-w-2xl mx-auto mb-12">
+                AI that explains like you're starting from zero—because everyone's a beginner at something.
+            </p>
+<div class="flex flex-col items-center gap-4">
+<button class="px-10 py-5 bg-primary text-on-primary text-xl font-bold rounded-xl shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95 flex items-center gap-3 group">
+                    Start Learning for Free
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-on-surface-variant/60 text-sm font-medium">No credit card required</p>
+</div>
+</div>
+<!-- Asymmetric Decorative Element -->
+<div class="absolute -right-20 top-40 opacity-20 pointer-events-none">
+<img alt="Friendly donkey character illustration" class="w-[500px] h-[500px] object-contain rotate-12" data-alt="Modern minimalist illustration of a friendly donkey wearing thick-rimmed glasses and a cozy scarf, soft warm lighting, 3D render style on a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8v7Co0hLQbTs4Wor0gFEk-LpIL9yA6IdIdG917Y7Xa0L6vIstAwWyGG-bWcVUplyT1_YqR-aojBxhx1noQge_osCWY-ZQqd94E7sGgo3zn1SyNY2TJwvWlLiGlxZ34c0p-OPvgYO4zLZgS0ZdfiGo73chqpbVSNvz5Gukg8tgqoOAwx5xgh-entw3cHirRHgkyKR8EzlZtZu7k7Bvdp7u9VqEUdmHwkiTkA1sdrthZK1HIkgmDoruw9bCeRlLlMmLjtgPMvbrp0-"/>
+</div>
+</section>
+<!-- New Section: About Us -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Peaceful learning environment" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1gzBbCZgmlpfS2uusL4gJmMIxfn9Gxg9dCmmjB_M_ODEua_aGMEAy9qUpJuLdxB4kVoixlHNfC1GYCmHeG3oKHYdspIGwP6ea1aqEwJeEgTRUKwrNh7taVzhY3qBQZfKCetRTt49ihykiZCNFMXwhS3vJNVGuwTTgHnr1Cewjz3YPNgvqR3Lx-4Hkx8gYsyIv8F_8rFvZ4uiwUwTVyXYsUuW6eTb4t_EE74qw7tyHPaS_PyVTCkcfQVmcOh8e5nAhKKBCwtGayYp"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</div>
+<div class="order-1 lg:order-2 flex flex-col gap-6">
+<span class="text-primary font-bold uppercase tracking-widest text-sm">Our Mission</span>
+<h2 class="text-5xl font-black text-on-surface tracking-tight leading-tight">Built by educators who hate gatekeeping.</h2>
+<div class="space-y-4 text-lg text-on-surface-variant leading-relaxed">
+<p>DonkeyGPT is an AI-powered learning companion built for absolute beginners. Created by educators frustrated with gatekeeping in learning.</p>
+<p class="font-medium text-on-surface">Mission: Make expert knowledge accessible without the intimidation.</p>
+<p>We believe everyone deserves patient, judgment-free explanations. Whether you're learning to code, understanding taxes, or exploring physics, we're here to help you cross the finish line.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- New Section: What Problems Does It Solve -->
+<section class="py-24 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black text-on-surface tracking-tight mb-4">Why DonkeyGPT?</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Traditional learning is broken for beginners. We fixed it.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Problem Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-on-surface mb-2">Traditional resources assume prior knowledge.</h4>
+<p class="text-on-surface-variant">Most tutorials skip the "obvious" parts, leaving you stuck on page one.</p>
+</div>
+</div>
+<!-- Problem Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="sentiment_dissatisfied">sentiment_dissatisfied</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-on-surface mb-2">Asking 'basic' questions feels embarrassing.</h4>
+<p class="text-on-surface-variant">Forums can be harsh. We provide a safe space where no question is too small.</p>
+</div>
+</div>
+<!-- Problem Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-on-surface mb-2">Tutors are expensive &amp; unavailable.</h4>
+<p class="text-on-surface-variant">High-quality help shouldn't cost $100/hr or only be available 9-to-5.</p>
+</div>
+</div>
+<!-- Problem Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-on-surface mb-2">Documentation is written for experts.</h4>
+<p class="text-on-surface-variant">Technical jargon acts as a wall. We tear that wall down with plain English.</p>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-primary text-on-primary p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-4xl" data-icon="check_circle">check_circle</span>
+<h3 class="text-2xl font-bold">The Solution: AI that meets you exactly where you are, any time, any topic.</h3>
+</div>
+<button class="px-8 py-3 bg-surface text-primary font-bold rounded-xl whitespace-nowrap hover:bg-primary-fixed transition-colors">Try it now</button>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-24 bg-surface px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-start gap-6 border border-outline-variant/20">
+<div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="account_tree">account_tree</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 tracking-tight">Break It Down</h3>
+<p class="text-on-surface-variant leading-relaxed">Complex topics explained step-by-step. We take the world's hardest concepts and unravel them into simple threads.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-start gap-6 border border-outline-variant/20">
+<div class="w-14 h-14 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 tracking-tight">No Dumb Questions</h3>
+<p class="text-on-surface-variant leading-relaxed">Ask anything, get patient answers. Our AI never loses its temper and never thinks you're moving too slowly.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-start gap-6 border border-outline-variant/20">
+<div class="w-14 h-14 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-3xl" data-icon="school">school</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 tracking-tight">Built for Beginners</h3>
+<p class="text-on-surface-variant leading-relaxed">Designed for learners, not experts. We strip away the ego of expertise to leave only the pure joy of discovery.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Section: How to Use It -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black text-on-surface tracking-tight mb-4">How to Master Anything</h2>
+<p class="text-on-surface-variant text-lg">Simple steps to unlocking your potential.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="relative flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center text-3xl font-black mb-6 shadow-inner transition-transform group-hover:scale-110">1</div>
+<h4 class="text-xl font-bold mb-3">Ask Simply</h4>
+<p class="text-on-surface-variant text-sm">Type your question in plain language—no special commands needed.</p>
+<div class="hidden md:block absolute top-10 -right-4 w-8 border-t-2 border-dashed border-outline-variant"></div>
+</div>
+<div class="relative flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center text-3xl font-black mb-6 shadow-inner transition-transform group-hover:scale-110">2</div>
+<h4 class="text-xl font-bold mb-3">Go Deeper</h4>
+<p class="text-on-surface-variant text-sm">If confused, just ask for simpler explanations or more examples.</p>
+<div class="hidden md:block absolute top-10 -right-4 w-8 border-t-2 border-dashed border-outline-variant"></div>
+</div>
+<div class="relative flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center text-3xl font-black mb-6 shadow-inner transition-transform group-hover:scale-110">3</div>
+<h4 class="text-xl font-bold mb-3">Apply It</h4>
+<p class="text-on-surface-variant text-sm">Request practice problems or see real-world applications of the topic.</p>
+<div class="hidden md:block absolute top-10 -right-4 w-8 border-t-2 border-dashed border-outline-variant"></div>
+</div>
+<div class="relative flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center text-3xl font-black mb-6 shadow-inner transition-transform group-hover:scale-110">4</div>
+<h4 class="text-xl font-bold mb-3">Own the Knowledge</h4>
+<p class="text-on-surface-variant text-sm">Build on concepts progressively at your own pace until it sticks.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof Section -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-4">Trusted by students, career switchers, and curious minds</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+<!-- Testimonial 1 -->
+<div class="p-8 rounded-xl bg-surface-container-low/50 italic text-on-surface-variant font-medium leading-relaxed relative">
+<span class="material-symbols-outlined absolute -top-4 -left-2 text-primary-container opacity-20 text-6xl" data-icon="format_quote">format_quote</span>
+                "DonkeyGPT explained quantum physics to me like I was five, and for the first time in my life, I actually understood it. It's the tutor I wish I had in college."
+                <div class="mt-6 flex items-center gap-3 not-italic">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Sarah J." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8vu3W9xriZk7y8pjtY5FmR7flNFx3nNhTe7wWAe2g7m8mRZSJp02RN3hSYAvJfVmMHBykPpaI9CkLBIlmK3awPurPawx0JLj9MwGuWEFdLzgEkjI3YUFG_z05_rkKyEL3SZxob__OGk1yhXJvUhA80w4s0Y36K2v9MiiPcB4X_e57276t5eoRumZ12LCKp-eBRJvrj313sE1RQskjvTUTjvaLsc-4h7kWkZQsyUUT5wyhnTdSILob_iR5a9cmcSBcfaDReqWqkvi"/>
+</div>
+<span class="font-bold text-on-surface tracking-tight">Sarah J., Career Switcher</span>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="p-8 rounded-xl bg-surface-container-low/50 italic text-on-surface-variant font-medium leading-relaxed relative">
+<span class="material-symbols-outlined absolute -top-4 -left-2 text-primary-container opacity-20 text-6xl" data-icon="format_quote">format_quote</span>
+                "Finally, an AI that doesn't talk down to me. It's patient, thorough, and surprisingly witty. It makes learning feel like a conversation, not a lecture."
+                <div class="mt-6 flex items-center gap-3 not-italic">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Marcus T." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmDMjuNaNoQfQ0FK4NmnZsDwMmTfpgmpTdrQaqaeFywr4ojqYAsj6rSXaZOQDI_U5_4OGvGd6fAfF7kmRKa4L1z30KvJNpCnz2Mzxb1vOS3DqDQdYKLMjgTjEGvU-n7lwdPm9_zaUss-hvxjkEiOHqLF95aDOidesO8nhUOAmzHPtB8A4BTdhH-5xRKe5ScLg-RmJpQ9LIwfF791IPrhUuBuHsWY1ttvdcT-w8-DZ42Ofk9iP2XeN0A4hYXR8toE1Cvb_rDD-FQpVv"/>
+</div>
+<span class="font-bold text-on-surface tracking-tight">Marcus T., University Student</span>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="p-8 rounded-xl bg-surface-container-low/50 italic text-on-surface-variant font-medium leading-relaxed relative">
+<span class="material-symbols-outlined absolute -top-4 -left-2 text-primary-container opacity-20 text-6xl" data-icon="format_quote">format_quote</span>
+                "I used DonkeyGPT to learn how to fix my own bike. The step-by-step breakdown was incredible. No jargon, just clear instructions."
+                <div class="mt-6 flex items-center gap-3 not-italic">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Elena R." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9L1F3XALJ_Owg64MpHw1nRjWGoAO7Ew5TORt3AYlFjpO0WsN6N_-bWo_FYMUOx2FX4Q4YoFTDmMMafP2mxI7xwVkeFH-FNVseSx96AIPquWE-GFGCvb722bOxmoMockLs5iRhj_UdcLrmftu8Im_migvrrcF5LGRjjI5wNhK5V-4i-vY75QSqxsY7m5DDBTmGear0B_6hKrs12980kWiYG72A4hue21taomgs9QkLUxPvcr-9qDSjsJLtONCQaQ_jf0Vjvrg4qfC-"/>
+</div>
+<span class="font-bold text-on-surface tracking-tight">Elena R., Lifelong Learner</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-24 px-8 bg-surface-container-low/30">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black text-on-surface tracking-tight mb-4">Choose Your Learning Journey</h2>
+<p class="text-on-surface-variant text-lg">Simple pricing for minds that never stop growing.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<!-- Free Plan Card -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col border border-outline-variant/10">
+<div class="mb-8">
+<h3 class="text-xl font-bold text-on-surface mb-2">Free Forever</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface">$0</span>
+<span class="text-on-surface-variant font-medium">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Up to 50 conversations per day</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Each conversation can go as deep as you need</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Patient, jargon-free explanations</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>No credit card required</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+                        Start Learning for Free
+                    </button>
+</div>
+<!-- Pro Plan Card -->
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative border-2 border-primary/20">
+<div class="absolute top-4 right-4 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">
+                        Most Popular
+                    </div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-on-surface mb-2">Pro</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-black text-on-surface">$8</span>
+<span class="text-on-surface-variant font-medium">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-medium text-on-surface">Unlimited conversations</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Priority response speed</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Early access to new features</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span>Support our mission to make learning accessible</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95">
+                        Upgrade to Pro
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Call to Action Section (Replaced Purple with Warm Brown) -->
+<section class="py-24 px-8">
+<div class="max-w-5xl mx-auto rounded-3xl bg-primary-container p-12 md:p-20 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-black text-on-primary-container mb-6 tracking-tight">Ready to stop feeling lost?</h2>
+<p class="text-xl text-on-primary-container/80 mb-10 max-w-xl mx-auto">Join 50,000+ learners who are mastering new skills without the headache.</p>
+<button class="px-8 py-4 bg-surface text-primary font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95">
+                    Get Started for Free
+                </button>
+</div>
+<!-- Glassmorphic Background Blur -->
+<div class="absolute -bottom-10 -right-10 w-64 h-64 bg-surface/10 rounded-full blur-3xl"></div>
+<div class="absolute -top-10 -left-10 w-64 h-64 bg-surface-container-lowest/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-slate-900 w-full py-12 px-8 border-t border-outline-variant/15">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto mb-12">
+<div class="max-w-xs">
+<span class="font-bold text-2xl text-[#634629] dark:text-[#fbf8ff] mb-4 block">DonkeyGPT</span>
+<p class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 text-body-sm leading-relaxed mb-6">
+                The patient intelligence that bridges the gap between expert knowledge and beginner curiosity.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<span class="font-bold text-on-surface text-sm uppercase tracking-wider">Product</span>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">Pricing</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">Features</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-bold text-on-surface text-sm uppercase tracking-wider">Company</span>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">Contact</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">Twitter</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 hover:text-primary transition-colors duration-200" href="#">Privacy</a>
+</div>
+<div class="flex flex-col gap-4 col-span-2 md:col-span-1">
+<span class="font-bold text-on-surface text-sm uppercase tracking-wider">Stay Updated</span>
+<div class="flex flex-col gap-3">
+<input class="px-4 py-2 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Subscribe</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto pt-8 border-t border-outline-variant/10">
+<span class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 text-body-sm">© 2024 DonkeyGPT. The Patient Intelligence.</span>
+<div class="flex gap-8">
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 text-sm" href="#">Terms</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 text-sm" href="#">Privacy Policy</a>
+<a class="text-[#1a1b22]/60 dark:text-[#eeedf7]/60 text-sm" href="#">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

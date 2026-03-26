@@ -3,12 +3,24 @@ import { NextResponse } from "next/server";
 
 export const proxy = auth((req) => {
   const isAuthenticated = !!req.auth;
-  if (isAuthenticated && req.nextUrl.pathname === "/") {
+  const { pathname } = req.nextUrl;
+
+  if (isAuthenticated && pathname === "/") {
     return NextResponse.redirect(new URL("/chat", req.url));
   }
+
+  const isProtected =
+    pathname.startsWith("/chat") || pathname.startsWith("/settings");
+
+  if (isProtected && !isAuthenticated) {
+    const signInUrl = new URL("/signin", req.nextUrl.origin);
+    signInUrl.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(signInUrl);
+  }
+
   return NextResponse.next();
 });
 
 export const config = {
-  matcher: ["/"],
+  matcher: ["/", "/chat/:path*", "/settings/:path*"],
 };

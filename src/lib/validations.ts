@@ -38,6 +38,7 @@ export const updateProfileSchema = z.object({
   email: z.string().email("Invalid email address").optional(),
   simplicityLevel: z.number().min(1).max(5).optional(),
   preferredTopics: z.array(z.string()).optional(),
+  onboardingCompleted: z.boolean().optional(),
 });
 
 export const updateSettingsSchema = z.object({

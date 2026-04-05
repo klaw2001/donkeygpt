@@ -148,7 +148,7 @@ export default function SignUpPage() {
       </aside>
 
       {/* Right Form Panel */}
-      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-10 h-full overflow-y-auto">
+      <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-10 h-full">
         <div className="w-full max-w-[480px]">
           {/* Mobile header: logo inline with title */}
           <div className="flex items-center gap-3 mb-2 lg:hidden">
@@ -173,12 +173,12 @@ export default function SignUpPage() {
           </div>
 
           {/* Social Auth */}
-          <div className="grid grid-cols-2 gap-3 mb-2 lg:mb-6">
+          <div className="grid grid-cols-2 gap-2 lg:gap-3 mb-2 lg:mb-6">
             <button
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isGoogleLoading}
-              className="flex items-center justify-center gap-3 bg-white hover:bg-gray-50 py-3 rounded-xl transition-all border border-[#E5E7EB] shadow-sm hover:shadow-md active:scale-[0.98] disabled:opacity-60"
+              className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 py-2.5 rounded-xl transition-all border border-[#E5E7EB] shadow-sm hover:shadow-md active:scale-[0.98] disabled:opacity-60"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden>
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -193,7 +193,7 @@ export default function SignUpPage() {
             <button
               type="button"
               disabled
-              className="flex items-center justify-center gap-3 bg-white py-3 rounded-xl border border-[#E5E7EB] shadow-sm opacity-50 cursor-not-allowed"
+              className="flex items-center justify-center gap-2 bg-white py-2.5 rounded-xl border border-[#E5E7EB] shadow-sm opacity-50 cursor-not-allowed"
             >
               <span className="material-symbols-outlined text-[20px] text-[#1F2937]">
                 terminal
@@ -363,7 +363,7 @@ export default function SignUpPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-[#7D5D3F] text-white py-3 lg:py-3.5 rounded-xl font-bold text-base shadow-xl shadow-[#7D5D3F]/20 hover:shadow-[#7D5D3F]/30 hover:-translate-y-px active:scale-[0.98] active:translate-y-0 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-[#7D5D3F] text-white py-2.5 lg:py-3.5 rounded-xl font-bold text-sm shadow-xl shadow-[#7D5D3F]/20 hover:shadow-[#7D5D3F]/30 hover:-translate-y-px active:scale-[0.98] active:translate-y-0 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {isLoading ? "Creating Account..." : "Create your free account"}
               </button>

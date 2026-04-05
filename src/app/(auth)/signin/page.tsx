@@ -109,30 +109,30 @@ export default function SignInPage() {
       </div>
 
       {/* Right Form Panel */}
-      <div className="flex-grow flex flex-col items-center justify-center p-6 md:p-10 lg:p-14 h-full overflow-y-auto bg-white md:bg-transparent">
-        <div className="w-full max-w-[420px] space-y-4 lg:space-y-6">
+      <div className="flex-grow flex flex-col items-center justify-center p-5 md:p-10 lg:p-14 h-full bg-white md:bg-transparent">
+        <div className="w-full max-w-[420px] space-y-3 lg:space-y-5">
           {/* Mobile logo */}
-          <div className="md:hidden flex flex-col items-center mb-6 text-center">
-            <Image src="/brand-assets/main-logo.png" alt="DonkeyGPT" width={44} height={44} className="rounded-xl mb-3" />
-            <h1 className="text-xl font-bold text-[#1a1b22]">DonkeyGPT</h1>
+          <div className="md:hidden flex items-center gap-2.5 mb-2">
+            <Image src="/brand-assets/main-logo.png" alt="DonkeyGPT" width={32} height={32} className="rounded-lg" />
+            <h1 className="text-sm font-bold text-[#1a1b22]">DonkeyGPT</h1>
           </div>
 
-          <div className="space-y-1">
-            <h1 className="text-3xl font-bold tracking-tight text-[#1a1b22]">
+          <div className="space-y-0.5">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1a1b22]">
               Sign In
             </h1>
-            <p className="text-[#4f453c] text-sm">
+            <p className="text-[#4f453c] text-xs md:text-sm">
               Welcome back. Please enter your account details.
             </p>
           </div>
 
           {/* Social Auth */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2 md:gap-3">
             <button
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isGoogleLoading}
-              className="flex items-center justify-center gap-3 py-3 px-4 bg-white border border-[#d3c4b9]/40 hover:bg-[#fdfbfc] transition-all rounded-xl text-sm font-medium text-[#1a1b22] hover:shadow-sm disabled:opacity-60"
+              className="flex items-center justify-center gap-2 md:gap-3 py-2.5 md:py-3 px-4 bg-white border border-[#d3c4b9]/40 hover:bg-[#fdfbfc] transition-all rounded-xl text-xs md:text-sm font-medium text-[#1a1b22] hover:shadow-sm disabled:opacity-60"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden>
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -145,7 +145,7 @@ export default function SignInPage() {
             <button
               type="button"
               disabled
-              className="flex items-center justify-center gap-3 py-3 px-4 bg-white border border-[#d3c4b9]/40 rounded-xl text-sm font-medium text-[#1a1b22] opacity-50 cursor-not-allowed"
+              className="flex items-center justify-center gap-2 md:gap-3 py-2.5 md:py-3 px-4 bg-white border border-[#d3c4b9]/40 rounded-xl text-xs md:text-sm font-medium text-[#1a1b22] opacity-50 cursor-not-allowed"
             >
               <span className="material-symbols-outlined text-xl">
                 terminal
@@ -167,10 +167,10 @@ export default function SignInPage() {
           </div>
 
           {/* Sign In Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-1.5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-4">
+            <div className="space-y-1">
               <label
-                className="block text-sm font-semibold text-[#1a1b22]/80"
+                className="block text-xs md:text-sm font-semibold text-[#1a1b22]/80"
                 htmlFor="email"
               >
                 Email address
@@ -180,7 +180,7 @@ export default function SignInPage() {
                 id="email"
                 type="email"
                 placeholder="name@company.com"
-                className="block w-full px-4 py-3 bg-white border border-[#d3c4b9]/40 rounded-xl text-[#1a1b22] placeholder:text-[#81756b]/60 focus:ring-2 focus:ring-[#7D5D3F]/15 focus:border-[#7D5D3F] transition-all outline-none"
+                className="block w-full px-4 py-2.5 md:py-3 text-sm bg-white border border-[#d3c4b9]/40 rounded-xl text-[#1a1b22] placeholder:text-[#81756b]/60 focus:ring-2 focus:ring-[#7D5D3F]/15 focus:border-[#7D5D3F] transition-all outline-none"
               />
               {errors.email && (
                 <p className="text-[#ba1a1a] text-xs mt-1">
@@ -189,13 +189,13 @@ export default function SignInPage() {
               )}
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <input
                 {...register("password")}
                 id="password"
                 type="password"
                 placeholder="••••••••"
-                className="block w-full px-4 py-3 bg-white border border-[#d3c4b9]/40 rounded-xl text-[#1a1b22] placeholder:text-[#81756b]/60 focus:ring-2 focus:ring-[#7D5D3F]/15 focus:border-[#7D5D3F] transition-all outline-none"
+                className="block w-full px-4 py-2.5 md:py-3 text-sm bg-white border border-[#d3c4b9]/40 rounded-xl text-[#1a1b22] placeholder:text-[#81756b]/60 focus:ring-2 focus:ring-[#7D5D3F]/15 focus:border-[#7D5D3F] transition-all outline-none"
               />
               <div className="flex items-center justify-between">
                 <label
@@ -236,7 +236,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 bg-[#7D5D3F] text-white font-bold rounded-xl shadow-lg shadow-[#7D5D3F]/10 hover:bg-[#6a4f35] hover:shadow-xl active:scale-[0.99] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-3 md:py-3.5 text-sm bg-[#7D5D3F] text-white font-bold rounded-xl shadow-lg shadow-[#7D5D3F]/10 hover:bg-[#6a4f35] hover:shadow-xl active:scale-[0.99] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isLoading ? "Signing in..." : "Continue to Workspace"}
             </button>
@@ -252,7 +252,7 @@ export default function SignInPage() {
             </Link>
           </p>
 
-          <div className="pt-2 text-center">
+          <div className="pt-1 text-center">
             <p className="text-[10px] uppercase tracking-[0.2em] text-[#81756b] font-bold">
               By continuing, you agree to our{" "}
               <Link href="/terms" className="underline">

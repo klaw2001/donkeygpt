@@ -69,7 +69,7 @@ export default function ChatLayout({ chatId }: Props) {
 
       <main className="flex-1 flex flex-col relative bg-[#fbf8ff]">
         {/* Header */}
-        <header className="flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50 bg-white/80 backdrop-blur-xl">
+        <header className="flex justify-between items-center px-4 py-2.5 md:px-6 md:py-4 w-full sticky top-0 z-50 bg-white/80 backdrop-blur-xl">
           <div className="flex items-center gap-4">
             <button
               className="md:hidden p-1 text-stone-500 hover:text-stone-900 transition-colors"
@@ -84,7 +84,7 @@ export default function ChatLayout({ chatId }: Props) {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen((v) => !v)}
-                  className="flex items-center gap-1 text-lg font-bold text-stone-900 tracking-tight hover:text-[#634629] transition-colors"
+                  className="flex items-center gap-1 text-base md:text-lg font-bold text-stone-900 tracking-tight hover:text-[#634629] transition-colors"
                 >
                   {headingText}
                   <span className="material-symbols-outlined text-base text-stone-400">
@@ -109,14 +109,14 @@ export default function ChatLayout({ chatId }: Props) {
                 )}
               </div>
             ) : (
-              <h2 className="text-lg font-bold text-stone-900 tracking-tight">{headingText}</h2>
+              <h2 className="text-base md:text-lg font-bold text-stone-900 tracking-tight">{headingText}</h2>
             )}
           </div>
         </header>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-6 py-6 no-scrollbar">
-          <div className="max-w-3xl mx-auto space-y-8">
+        <div className="flex-1 overflow-y-auto px-3 py-3 md:px-6 md:py-6 no-scrollbar">
+          <div className="max-w-3xl mx-auto space-y-4 md:space-y-8">
             {messages.length === 0 ? (
               <EmptyState />
             ) : (
@@ -134,7 +134,7 @@ export default function ChatLayout({ chatId }: Props) {
             {/* Donkey Pulse (loading indicator before first assistant token) */}
             {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex items-center gap-3 opacity-40 animate-pulse">
-                <div className="w-9 h-9 bg-[#e8e7f1] rounded-xl flex items-center justify-center text-stone-400">
+                <div className="w-7 h-7 md:w-9 md:h-9 bg-[#e8e7f1] rounded-xl flex items-center justify-center text-stone-400">
                   <span className="material-symbols-outlined text-sm">more_horiz</span>
                 </div>
                 <div className="h-3 bg-[#e8e7f1] w-1/3 rounded-full" />
@@ -172,40 +172,40 @@ function EmptyState() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center gap-8">
+    <div className="flex flex-col items-center justify-center min-h-[50vh] text-center gap-4 md:gap-8">
       <Image
         src="/brand-assets/main-logo.png"
         alt="DonkeyGPT"
-        width={80}
-        height={80}
-        className="rounded-3xl"
+        width={56}
+        height={56}
+        className="rounded-2xl md:rounded-3xl md:w-20 md:h-20"
       />
       <div>
-        <h3 className="text-xl font-bold text-[#1a1b22] tracking-tight mb-2">
+        <h3 className="text-base md:text-xl font-bold text-[#1a1b22] tracking-tight mb-1 md:mb-2">
           How can I help you learn today?
         </h3>
-        <p className="text-[#4f453c] text-sm">
+        <p className="text-[#4f453c] text-xs md:text-sm">
           Ask me anything—I&apos;ll break it down without judgment.
         </p>
       </div>
-      <div data-tour="suggestions" className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-2xl">
+      <div data-tour="suggestions" className="grid grid-cols-2 gap-2 md:gap-3 w-full max-w-2xl">
         {displayed.length === 0
           ? Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
-                className="h-[60px] bg-[#f4f2fd] rounded-2xl animate-pulse"
+                className="h-[52px] md:h-[60px] bg-[#f4f2fd] rounded-2xl animate-pulse"
               />
             ))
           : displayed.map((ex) => (
               <button
                 key={ex.text}
                 onClick={() => setPendingQuestion(ex.text)}
-                className="flex items-center gap-3 p-4 bg-[#f4f2fd] rounded-2xl text-left hover:bg-[#eeedf7] active:scale-[0.98] transition-all cursor-pointer"
+                className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-[#f4f2fd] rounded-2xl text-left hover:bg-[#eeedf7] active:scale-[0.98] transition-all cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#634629] flex-shrink-0">
-                  <span className="material-symbols-outlined text-sm">{ex.icon}</span>
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-white flex items-center justify-center text-[#634629] flex-shrink-0">
+                  <span className="material-symbols-outlined text-xs md:text-sm">{ex.icon}</span>
                 </div>
-                <span className="text-sm text-[#4f453c] font-medium">{ex.text}</span>
+                <span className="text-xs md:text-sm text-[#4f453c] font-medium line-clamp-2">{ex.text}</span>
               </button>
             ))}
       </div>

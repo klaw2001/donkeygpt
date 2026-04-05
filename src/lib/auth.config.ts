@@ -10,7 +10,6 @@ export const authConfig: NextAuthConfig = {
   ],
   pages: {
     signIn: "/signin",
-    newUser: "/onboarding",
   },
   callbacks: {
     async jwt({ token, user }) {

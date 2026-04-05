@@ -68,7 +68,7 @@ export default function ChatSidebar({ open, onClose, collapsed, onToggleCollapse
       "fixed md:relative transition-all duration-300",
       // Mobile: slide in/out; Desktop: full width or collapsed
       open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
-      collapsed ? "md:w-16" : "w-72"
+      collapsed ? "md:w-16" : "w-64 md:w-72"
     )}>
       {/* Brand */}
       <div className={cn("px-3 py-6 flex flex-col", collapsed ? "items-center" : "px-6")}>
@@ -92,7 +92,7 @@ export default function ChatSidebar({ open, onClose, collapsed, onToggleCollapse
           />
           {!collapsed && (
             <div>
-              <h1 className="text-xl font-bold tracking-tighter text-stone-900">
+              <h1 className="text-lg md:text-xl font-bold tracking-tighter text-stone-900">
                 DonkeyGPT
               </h1>
               <p className="text-xs text-stone-500 font-medium uppercase tracking-widest">
@@ -163,7 +163,7 @@ export default function ChatSidebar({ open, onClose, collapsed, onToggleCollapse
                 title={collapsed ? chat.title : undefined}
                 className={cn(
                   "flex items-center gap-3 rounded-lg cursor-pointer transition-colors duration-200 group",
-                  collapsed ? "justify-center px-2 py-2.5" : "px-3 py-2.5",
+                  collapsed ? "justify-center px-2 py-2" : "px-3 py-2",
                   currentChatId === chat.id
                     ? "text-stone-900 font-semibold bg-stone-200"
                     : "text-stone-500 hover:bg-stone-200"

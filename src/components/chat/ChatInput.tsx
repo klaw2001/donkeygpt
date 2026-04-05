@@ -156,7 +156,7 @@ export default function ChatInput() {
   };
 
   return (
-    <footer data-tour="chat-input" className="px-6 py-4 bg-gradient-to-t from-[#fbf8ff] to-transparent">
+    <footer data-tour="chat-input" className="px-3 py-2 md:px-6 md:py-4 bg-gradient-to-t from-[#fbf8ff] to-transparent">
       <div className="max-w-3xl mx-auto space-y-2">
         {/* Collapsible Simplicity Slider */}
         <div
@@ -197,7 +197,7 @@ export default function ChatInput() {
             className="flex items-center gap-1 text-[10px] font-bold text-stone-400 uppercase tracking-widest hover:text-[#634629] transition-colors py-1"
             title={sliderOpen ? "Hide complexity slider" : "Show complexity slider"}
           >
-            <span className="text-[10px]">Explain like I&apos;m...</span>
+            <span className="text-[10px] hidden sm:inline">Explain like I&apos;m...</span>
             <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
               {sliderOpen ? "keyboard_arrow_down" : "keyboard_arrow_up"}
             </span>
@@ -207,7 +207,7 @@ export default function ChatInput() {
         {/* Chat Bar */}
         <div className="relative group">
           <div className="absolute inset-0 bg-[#634629]/5 blur-xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity" />
-          <div className="relative flex items-end gap-3 bg-[#e3e1ec] p-3 pl-6 rounded-3xl border border-transparent group-focus-within:border-[#634629]/10 transition-all">
+          <div className="relative flex items-end gap-2 md:gap-3 bg-[#e3e1ec] p-2 pl-4 md:p-3 md:pl-6 rounded-3xl border border-transparent group-focus-within:border-[#634629]/10 transition-all">
             <textarea
               ref={textareaRef}
               value={input}
@@ -216,16 +216,16 @@ export default function ChatInput() {
               placeholder="Ask me anything—I'll break it down..."
               rows={1}
               disabled={isStreaming}
-              className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-[#1a1b22] py-3 resize-none max-h-32 min-h-[44px] placeholder-stone-500 font-medium leading-relaxed outline-none disabled:opacity-60"
+              className="flex-1 bg-transparent border-none focus:ring-0 text-xs md:text-sm text-[#1a1b22] py-2 md:py-3 resize-none max-h-32 min-h-[40px] md:min-h-[44px] placeholder-stone-500 font-medium leading-relaxed outline-none disabled:opacity-60"
             />
-            <div className="flex items-center gap-2 pb-1.5 pr-1.5">
+            <div className="flex items-center gap-2 pb-1 pr-1 md:pb-1.5 md:pr-1.5">
               <span className="text-[10px] font-mono text-stone-400 bg-stone-200/50 px-2 py-1 rounded-md hidden sm:block">
                 {input.length} chars
               </span>
               <button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isStreaming}
-                className="w-10 h-10 bg-[#634629] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
+                className="w-8 h-8 md:w-10 md:h-10 bg-[#634629] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:scale-100"
               >
                 <span className="material-symbols-outlined">
                   {isStreaming ? "more_horiz" : "arrow_upward"}
@@ -235,7 +235,7 @@ export default function ChatInput() {
           </div>
         </div>
 
-        <p className="text-center text-[10px] text-stone-400 font-medium">
+        <p className="text-center text-[10px] text-stone-400 font-medium hidden sm:block">
           DonkeyGPT can make mistakes. Consider checking important information.
         </p>
       </div>

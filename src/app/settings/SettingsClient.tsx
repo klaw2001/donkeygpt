@@ -172,7 +172,7 @@ export default function SettingsClient() {
   const isPro = subInfo?.plan === "pro" && subInfo?.status === "active";
 
   return (
-    <div className="flex min-h-screen bg-[#fbf8ff]">
+    <div className="h-screen overflow-hidden flex flex-col lg:flex-row bg-[#fbf8ff]">
       {/* Sidebar */}
       <aside className="flex flex-col gap-2 p-6 border-r border-[#eeedf7] bg-[#fbf8ff] h-screen sticky top-0 w-64 hidden lg:block">
         <div className="mb-8 px-4">
@@ -216,12 +216,16 @@ export default function SettingsClient() {
         </div>
       </aside>
 
-      <main className="flex-1 overflow-y-auto custom-scrollbar">
+      <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-[#f4f2fd] px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4 lg:hidden">
-            <span className="material-symbols-outlined text-[#634629]">menu</span>
-            <Link href="/chat" className="font-bold text-[#634629]">DonkeyGPT</Link>
+        <header className="flex-shrink-0 sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-[#f4f2fd] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3 lg:hidden">
+            <Link href="/chat" className="flex items-center justify-center w-7 h-7 rounded-lg text-stone-500 hover:text-[#634629] hover:bg-[#f4f2fd] transition-colors">
+              <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+            </Link>
+            <span className="text-sm font-bold text-[#634629]">
+              {navItems.find((n) => n.tab === activeTab)?.label}
+            </span>
           </div>
           <div className="hidden lg:flex items-center gap-3">
             <Link
@@ -238,18 +242,37 @@ export default function SettingsClient() {
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="bg-[#634629] text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-60"
+            className="bg-[#634629] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-60"
           >
-            {isSaving ? "Saving..." : "Save Changes"}
+            {isSaving ? "Saving..." : "Save"}
           </button>
         </header>
 
-        <div className="max-w-4xl mx-auto px-8 py-12 space-y-16">
+        {/* Mobile tab bar */}
+        <div className="flex-shrink-0 flex gap-1 px-4 py-2 border-b border-[#f4f2fd] overflow-x-auto no-scrollbar lg:hidden bg-white/60">
+          {navItems.map((item) => (
+            <button
+              key={item.tab}
+              onClick={() => setActiveTab(item.tab)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                activeTab === item.tab
+                  ? "bg-[#634629] text-white"
+                  : "text-stone-500 bg-[#f4f2fd] hover:bg-[#eeedf7]"
+              }`}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>{item.icon}</span>
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex-1 overflow-y-auto custom-scrollbar">
+        <div className="max-w-4xl mx-auto px-4 py-6 md:px-8 md:py-12 space-y-8 md:space-y-16">
           {/* General Tab */}
           {activeTab === "general" && (
             <section>
               <div className="mb-8">
-                <h3 className="text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
+                <h3 className="text-lg md:text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
                   Personalize your experience
                 </h3>
                 <p className="text-[#4f453c] leading-relaxed">
@@ -257,7 +280,7 @@ export default function SettingsClient() {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-transparent hover:border-[#d3c4b9]/20 transition-all flex flex-col gap-6">
+                <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-transparent hover:border-[#d3c4b9]/20 transition-all flex flex-col gap-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="material-symbols-outlined text-[#6b38d4]">dark_mode</span>
@@ -290,7 +313,7 @@ export default function SettingsClient() {
                     </select>
                   </div>
                 </div>
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-transparent flex flex-col justify-center">
+                <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-transparent flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="material-symbols-outlined text-[#634629]">auto_fix_high</span>
                     <span className="font-semibold text-[#1a1b22]">Simplicity Slider</span>
@@ -319,7 +342,7 @@ export default function SettingsClient() {
           {activeTab === "account" && (
             <section>
               <div className="mb-8">
-                <h3 className="text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
+                <h3 className="text-lg md:text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
                   Account Details
                 </h3>
                 <p className="text-[#4f453c] leading-relaxed">
@@ -377,7 +400,7 @@ export default function SettingsClient() {
           {activeTab === "data" && (
             <section>
               <div className="mb-8">
-                <h3 className="text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
+                <h3 className="text-lg md:text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
                   Data & Privacy
                 </h3>
                 <p className="text-[#4f453c] leading-relaxed">
@@ -437,7 +460,7 @@ export default function SettingsClient() {
           {activeTab === "subscription" && (
             <section>
               <div className="mb-8">
-                <h3 className="text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
+                <h3 className="text-lg md:text-2xl font-bold tracking-tight text-[#1a1b22] mb-2">
                   Subscription
                 </h3>
                 <p className="text-[#4f453c] leading-relaxed">
@@ -457,7 +480,7 @@ export default function SettingsClient() {
 
               <div className="bg-[#eeedf7] p-1 rounded-2xl flex flex-col md:flex-row gap-1">
                 {/* Free Plan */}
-                <div className="flex-1 bg-white p-8 rounded-xl shadow-sm relative overflow-hidden flex flex-col">
+                <div className="flex-1 bg-white p-4 md:p-8 rounded-xl shadow-sm relative overflow-hidden flex flex-col">
                   {!isPro && (
                     <div className="absolute top-4 right-4 bg-[#634629]/10 text-[#634629] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                       Active
@@ -498,7 +521,7 @@ export default function SettingsClient() {
                 </div>
 
                 {/* Pro Plan */}
-                <div className="flex-1 bg-[#634629] p-8 rounded-xl shadow-lg relative overflow-hidden flex flex-col">
+                <div className="flex-1 bg-[#634629] p-4 md:p-8 rounded-xl shadow-lg relative overflow-hidden flex flex-col">
                   <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#6b38d4] opacity-20 rounded-full blur-3xl pointer-events-none" />
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl pointer-events-none" />
                   {isPro && (
@@ -605,8 +628,8 @@ export default function SettingsClient() {
           )}
         </div>
 
-        <footer className="w-full py-8 border-t border-[#eeedf7] bg-[#fbf8ff]">
-          <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6">
+        <footer className="w-full py-4 md:py-8 border-t border-[#eeedf7] bg-[#fbf8ff]">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 md:px-8 max-w-7xl mx-auto gap-3 md:gap-6">
             <p className="text-xs text-slate-500">© 2026 DonkeyGPT. All rights reserved.</p>
             <div className="flex gap-8">
               <Link href="/privacy" className="text-xs text-slate-400 hover:text-[#634629] transition-all">Privacy</Link>
@@ -614,10 +637,11 @@ export default function SettingsClient() {
             </div>
           </div>
         </footer>
+        </div>
       </main>
 
-      {/* Mobile bottom nav */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-[#f4f2fd] px-6 py-3 flex justify-around items-center z-50">
+      {/* Mobile bottom nav — hidden since we now have top tab bar */}
+      <div className="hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-[#f4f2fd] px-6 py-3 justify-around items-center z-50">
         {navItems.map((item) => (
           <button
             key={item.tab}

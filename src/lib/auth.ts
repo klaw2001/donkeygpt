@@ -56,7 +56,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           where: { email: user.email },
         });
         if (!existingUser) {
-          await prisma.user.create({
+          const newUser = await prisma.user.create({
             data: {
               email: user.email,
               name: user.name,
@@ -64,6 +64,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               emailVerified: new Date(),
             },
           });
+          // Capture signup geo for Google OAuth signups — IP not available here, logged via visit tracking
+          prisma.signupEvent.create({ data: { userId: newUser.id } }).catch(() => {});
         }
       }
       return true;

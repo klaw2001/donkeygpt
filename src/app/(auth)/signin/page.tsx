@@ -35,6 +35,7 @@ export default function SignInPage() {
       if (result?.error) {
         toast.error("Invalid email or password. Please try again.");
       } else {
+        fetch("/api/track/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ provider: "credentials" }) }).catch(() => {});
         router.push("/chat");
         router.refresh();
       }

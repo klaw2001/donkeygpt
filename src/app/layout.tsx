@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/components/layout/Providers";
+import VisitTracker from "@/components/layout/visit-tracker";
 import Script from "next/script";
 
 const inter = Inter({
@@ -54,6 +55,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased min-h-screen">
         <Providers>{children}</Providers>
+        <VisitTracker />
         <Toaster position="top-right" richColors />
 
         {/* Google Translate widget */}

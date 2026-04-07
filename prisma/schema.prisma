@@ -16,6 +16,7 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  disabled      Boolean   @default(false)
 
   simplicityLevel     Int      @default(3)
   preferredTopics     String[]
@@ -33,6 +34,8 @@ model User {
   usageLogs    UsageLog[]
   subscription Subscription?
   invoices     Invoice[]
+  signupEvent  SignupEvent?
+  loginEvents  LoginEvent[]
 }
 
 model Account {
@@ -160,5 +163,57 @@ model UsageLog {
 
   @@index([userId])
   @@index([chatId])
+  @@index([createdAt])
+}
+
+model SignupEvent {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  ip        String?
+  country   String?
+  region    String?
+  city      String?
+  timezone  String?
+  isp       String?
+  lat       Float?
+  lon       Float?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LoginEvent {
+  id        String   @id @default(cuid())
+  userId    String?
+  email     String?
+  ip        String?
+  country   String?
+  region    String?
+  city      String?
+  userAgent String?
+  provider  String
+  success   Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([email])
+}
+
+model PageVisit {
+  id        String   @id @default(cuid())
+  ip        String
+  path      String
+  country   String?
+  region    String?
+  city      String?
+  userAgent String?
+  userId    String?
+  createdAt DateTime @default(now())
+
+  @@index([ip])
+  @@index([path])
   @@index([createdAt])
 }

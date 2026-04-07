@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { hashPassword } from "@/lib/password";
 import { signUpSchema } from "@/lib/validations";
+import { getClientIp, getGeo } from "@/lib/geo";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -28,6 +29,13 @@ export async function POST(request: Request) {
     data: { name, email, password: hashed },
     select: { id: true, email: true, name: true },
   });
+
+  // Capture signup geo — fire and forget
+  const ip = getClientIp(request);
+  const geo = ip ? getGeo(ip) : {};
+  prisma.signupEvent.create({
+    data: { userId: user.id, ip, ...geo },
+  }).catch(() => {});
 
   return Response.json(user, { status: 201 });
 }

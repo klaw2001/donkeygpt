@@ -22,6 +22,10 @@ export async function GET() {
     bySimplicity,
     dailyUsage,
     topUsers,
+    activeSubscriptions,
+    planDistribution,
+    userGrowth,
+    signupsByCountry,
   ] = await Promise.all([
     prisma.user.count(),
     prisma.chat.count(),
@@ -59,6 +63,24 @@ export async function GET() {
       orderBy: { _sum: { totalTokens: "desc" } },
       take: 10,
     }),
+    prisma.user.count({ where: { plan: "pro", subscriptionStatus: "active" } }),
+    prisma.user.groupBy({ by: ["plan"], _count: { id: true } }),
+    prisma.$queryRaw<{ day: Date; signups: bigint; cumulative: bigint }[]>`
+      SELECT
+        date_trunc('day', "createdAt") AS day,
+        COUNT(*)::bigint AS signups,
+        SUM(COUNT(*)) OVER (ORDER BY date_trunc('day', "createdAt"))::bigint AS cumulative
+      FROM "User"
+      WHERE "createdAt" >= NOW() - INTERVAL '90 days'
+      GROUP BY date_trunc('day', "createdAt")
+      ORDER BY day ASC
+    `,
+    prisma.signupEvent.groupBy({
+      by: ["country"],
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
   ]);
 
   const topUserDetails = await prisma.user.findMany({
@@ -78,7 +100,12 @@ export async function GET() {
       totalCompletionTokens: tokenAggregates._sum.completionTokens ?? 0,
       avgTokensPerRequest: Math.round(tokenAggregates._avg.totalTokens ?? 0),
       avgDurationMs: Math.round(tokenAggregates._avg.durationMs ?? 0),
+      activeSubscriptions,
     },
+    planDistribution: planDistribution.map((r: { plan: string; _count: { id: number } }) => ({
+      plan: r.plan,
+      count: r._count.id,
+    })),
     byModel: byModel.map((r: { model: string; _count: { id: number }; _sum: { totalTokens: number | null } }) => ({
       model: r.model,
       requests: r._count.id,
@@ -93,6 +120,15 @@ export async function GET() {
       day: r.day,
       requests: Number(r.requests),
       tokens: Number(r.tokens),
+    })),
+    userGrowth: userGrowth.map((r: { day: Date; signups: bigint; cumulative: bigint }) => ({
+      day: r.day,
+      signups: Number(r.signups),
+      cumulative: Number(r.cumulative),
+    })),
+    signupsByCountry: signupsByCountry.map((r: { country: string | null; _count: { id: number } }) => ({
+      country: r.country ?? "Unknown",
+      count: r._count.id,
     })),
     topUsers: topUsers.map((r: { userId: string; _count: { id: number }; _sum: { totalTokens: number | null } }) => ({
       userId: r.userId,

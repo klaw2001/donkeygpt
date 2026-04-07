@@ -4,7 +4,7 @@ import OverviewCharts from "@/components/admin/overview-charts";
 
 async function getStats() {
   const session = await auth();
-  const baseUrl = process.env.NEXTAUTH_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.NEXTAUTH_URL ?? "https://donkeygpt.io";
   const res = await fetch(`${baseUrl}/api/admin/stats`, {
     headers: { cookie: `next-auth.session-token=${session}` },
     cache: "no-store",

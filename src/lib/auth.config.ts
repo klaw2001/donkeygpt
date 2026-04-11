@@ -1,6 +1,8 @@
 import type { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const authConfig: NextAuthConfig = {
   trustHost: true,
   cookies: {
@@ -10,7 +12,7 @@ export const authConfig: NextAuthConfig = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: false,
+        secure: isProduction,
       },
     },
     state: {
@@ -19,7 +21,7 @@ export const authConfig: NextAuthConfig = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: false,
+        secure: isProduction,
       },
     },
     callbackUrl: {
@@ -28,7 +30,7 @@ export const authConfig: NextAuthConfig = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: false,
+        secure: isProduction,
       },
     },
     sessionToken: {
@@ -37,7 +39,7 @@ export const authConfig: NextAuthConfig = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: false,
+        secure: isProduction,
       },
     },
   },

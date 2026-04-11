@@ -7,11 +7,12 @@ export const authConfig: NextAuthConfig = {
   trustHost: true,
   cookies: {
     pkceCodeVerifier: {
-      name: "authjs.pkce.code_verifier",
+      name: isProduction ? "__Secure-authjs.pkce.code_verifier" : "authjs.pkce.code_verifier",
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
+        domain: isProduction ? ".donkeygpt.io" : undefined,
         secure: isProduction,
       },
     },
